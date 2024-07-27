@@ -112,29 +112,24 @@ const Video = () => {
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [videoId, setVideoId] = useState('');
-  const [errVideoId, setErrVideoId] = useState('');
   const [categoryChecked, setCategoryChecked] = useState('Meditation');
 
 
-  const fetchVideos = async () => {
-    try {
-      const snapshot = await firestore().collection('Videos')
-        .where('category', '==', SelectedMusicSection)
-        .orderBy('createdAt', 'desc')
-        .get();
-      const videosList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      const videosWithTitles = await Promise.all(videosList.map(async video => {
-        const title = await fetchVideoTitle(video.videoId);
-        return { ...video, title };
-      }));
-      setVideos(videosWithTitles);
-
-    } catch (error) {
-      console.error('Error fetching videos: ', error);
-    }
-  };
-
   useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const snapshot = await firestore().collection('Videos').where('category', '==', SelectedMusicSection).get();
+        const videosList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const videosWithTitles = await Promise.all(videosList.map(async video => {
+          const title = await fetchVideoTitle(video.videoId);
+          return { ...video, title };
+        }));
+        setVideos(videosWithTitles);
+
+      } catch (error) {
+        console.error('Error fetching videos: ', error);
+      }
+    };
     fetchVideos();
   }, [SelectedMusicSection]);
 
@@ -202,37 +197,6 @@ const Video = () => {
       <Text style={styles.videoTitle}>{item.title}</Text>
     </View>
   );
-
-
-  const handleSaveVideo = async () => {
-    if (videoId && categoryChecked) {
-      try {
-        await firestore().collection('Videos').add({
-          videoId,
-          category: categoryChecked,
-          createdAt: firestore.FieldValue.serverTimestamp(),
-        });
-        // .then(async () => {
-        setVideoId('');
-        setCategoryChecked('Meditation');
-        setShowAddModal(false);
-        await fetchVideos();
-        // })
-        // .catch(error => {
-        //   console.error("Error adding document: ", error);
-        // });
-      } catch (error) {
-        console.error('Error adding video: ', error);
-      }
-    } else {
-      if (videoId.length == 0) {
-        setErrVideoId('Please enter video id')
-      } else {
-        setErrVideoId('')
-      }
-    }
-  };
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -327,19 +291,13 @@ const Video = () => {
         animationType='fade'
         onRequestClose={() => setShowAddModal(false)}
         modalTitle='Add new video'
-        onClose={() => {
-          setShowAddModal(false)
-          setVideoId('');
-          setErrVideoId('');
-        }}
-        btnSavePress={handleSaveVideo}
+        onClose={() => setShowAddModal(false)}
       >
         <TextInputComponent
           placeholder="Enter youtube video id here"
           value={videoId}
           onChangeText={setVideoId} />
-        {errVideoId ? <Text style={{ color: 'red', marginHorizontal: 20 }}>{errVideoId}</Text> : <Text></Text>}
-        <Text style={{ marginHorizontal: 10, color: '#432C81', marginTop: 10 }}>Choose category:</Text>
+        <Text style={{marginHorizontal:20,color:'gray'}}>Choose category:</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <RadioButton

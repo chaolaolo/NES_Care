@@ -118,10 +118,7 @@ const Video = () => {
 
   const fetchVideos = async () => {
     try {
-      const snapshot = await firestore().collection('Videos')
-        .where('category', '==', SelectedMusicSection)
-        .orderBy('createdAt', 'desc')
-        .get();
+      const snapshot = await firestore().collection('Videos').where('category', '==', SelectedMusicSection).get();
       const videosList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       const videosWithTitles = await Promise.all(videosList.map(async video => {
         const title = await fetchVideoTitle(video.videoId);
@@ -225,7 +222,7 @@ const Video = () => {
         console.error('Error adding video: ', error);
       }
     } else {
-      if (videoId.length == 0) {
+      if (!videoId) {
         setErrVideoId('Please enter video id')
       } else {
         setErrVideoId('')

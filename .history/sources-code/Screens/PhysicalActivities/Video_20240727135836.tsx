@@ -91,8 +91,6 @@ import ModalComponent from '../../../components/Modal/ModalComponent';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../redux/Reducers/userReducer';
-import TextInputComponent from '../../../components/TextInput/TextInputComponent';
-import { RadioButton } from 'react-native-paper';
 
 const API_KEY = 'AIzaSyAmKwqjAr-2ha3PsrErg0r0gqyfz2XpiKM';
 
@@ -110,31 +108,21 @@ const Video = () => {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const prevScrollY = useRef(0);
 
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [videoId, setVideoId] = useState('');
-  const [errVideoId, setErrVideoId] = useState('');
-  const [categoryChecked, setCategoryChecked] = useState('Meditation');
-
-
-  const fetchVideos = async () => {
-    try {
-      const snapshot = await firestore().collection('Videos')
-        .where('category', '==', SelectedMusicSection)
-        .orderBy('createdAt', 'desc')
-        .get();
-      const videosList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      const videosWithTitles = await Promise.all(videosList.map(async video => {
-        const title = await fetchVideoTitle(video.videoId);
-        return { ...video, title };
-      }));
-      setVideos(videosWithTitles);
-
-    } catch (error) {
-      console.error('Error fetching videos: ', error);
-    }
-  };
-
   useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const snapshot = await firestore().collection('Videos').where('category', '==', SelectedMusicSection).get();
+        const videosList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const videosWithTitles = await Promise.all(videosList.map(async video => {
+          const title = await fetchVideoTitle(video.videoId);
+          return { ...video, title };
+        }));
+        setVideos(videosWithTitles);
+
+      } catch (error) {
+        console.error('Error fetching videos: ', error);
+      }
+    };
     fetchVideos();
   }, [SelectedMusicSection]);
 
@@ -202,37 +190,6 @@ const Video = () => {
       <Text style={styles.videoTitle}>{item.title}</Text>
     </View>
   );
-
-
-  const handleSaveVideo = async () => {
-    if (videoId && categoryChecked) {
-      try {
-        await firestore().collection('Videos').add({
-          videoId,
-          category: categoryChecked,
-          createdAt: firestore.FieldValue.serverTimestamp(),
-        });
-        // .then(async () => {
-        setVideoId('');
-        setCategoryChecked('Meditation');
-        setShowAddModal(false);
-        await fetchVideos();
-        // })
-        // .catch(error => {
-        //   console.error("Error adding document: ", error);
-        // });
-      } catch (error) {
-        console.error('Error adding video: ', error);
-      }
-    } else {
-      if (videoId.length == 0) {
-        setErrVideoId('Please enter video id')
-      } else {
-        setErrVideoId('')
-      }
-    }
-  };
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -312,7 +269,6 @@ const Video = () => {
       {
         user.uid !== "Admin" ? (
           <TouchableOpacity
-            onPress={() => setShowAddModal(true)}
             style={[styles.btnAddVideo, isScrollingDown ? { opacity: 0 } : { opacity: 1 }]}>
             <Text style={styles.txtAddVideo}>+</Text>
           </TouchableOpacity>
@@ -322,42 +278,13 @@ const Video = () => {
 
       {/* **** */}
       <ModalComponent
-        visible={showAddModal}
+        visible={props.visible}
         transparent={true}
         animationType='fade'
-        onRequestClose={() => setShowAddModal(false)}
+        onRequestClose={props.onClose}
         modalTitle='Add new video'
-        onClose={() => {
-          setShowAddModal(false)
-          setVideoId('');
-          setErrVideoId('');
-        }}
-        btnSavePress={handleSaveVideo}
-      >
-        <TextInputComponent
-          placeholder="Enter youtube video id here"
-          value={videoId}
-          onChangeText={setVideoId} />
-        {errVideoId ? <Text style={{ color: 'red', marginHorizontal: 20 }}>{errVideoId}</Text> : <Text></Text>}
-        <Text style={{ marginHorizontal: 10, color: '#432C81', marginTop: 10 }}>Choose category:</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginBottom: 10 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <RadioButton
-              value="Meditation"
-              status={categoryChecked === 'Meditation' ? 'checked' : 'unchecked'}
-              onPress={() => setCategoryChecked('Meditation')}
-            />
-            <Text>Meditation</Text>
-          </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <RadioButton
-              value="Yoga"
-              status={categoryChecked === 'Yoga' ? 'checked' : 'unchecked'}
-              onPress={() => setCategoryChecked('Yoga')}
-            />
-            <Text>Yoga</Text>
-          </View>
-        </View>
+        >
+
       </ModalComponent>
       {/* **** */}
 
