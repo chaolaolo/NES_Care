@@ -66,20 +66,18 @@ const HomeScreen = () => {
 
     useEffect(() => {
         if (user.bmi < 18.5) {
-            // setImgBodyCondition('https://www.planetayurveda.com/pa-wp-images/underweight.jpg');
-            setImgBodyCondition('https://i.pinimg.com/736x/3b/1e/3d/3b1e3d90c6c72a4ef14184f7cbffafe2.jpg');
+            setImgBodyCondition('https://www.planetayurveda.com/pa-wp-images/underweight.jpg');
         } else if (user.bmi >= 18.5 && user.bmi < 24.9) {
             // setImgBodyCondition('https://gcs.tripi.vn/public-tripi/tripi-feed/img/474084HRF/chi-so-bmi_014148769.jpg');
-            setImgBodyCondition('https://i.pinimg.com/736x/22/dd/fc/22ddfca5f4c41bdbeebbbe58e62a6498.jpg');
+            setImgBodyCondition('https://i.pinimg.com/736x/3b/1e/3d/3b1e3d90c6c72a4ef14184f7cbffafe2.jpg');
+
         } else if (user.bmi >= 25 && user.bmi < 29.9) {
-            // setImgBodyCondition('https://render.fineartamerica.com/images/rendered/default/poster/8/8/break/images/artworkimages/medium/2/1-topless-overweight-man-holding-body-fat-science-photo-library.jpg');
-            setImgBodyCondition('https://i.pinimg.com/736x/7d/21/12/7d21128e2066d7258f15a4437ab30593.jpg');
+            setImgBodyCondition('https://render.fineartamerica.com/images/rendered/default/poster/8/8/break/images/artworkimages/medium/2/1-topless-overweight-man-holding-body-fat-science-photo-library.jpg');
+
         } else if (user.bmi >= 30 && user.bmi < 34.9) {
-            // setImgBodyCondition('https://www.docdrmuratkanlioz.com/en/wp-content/uploads/2023/06/Obez-Oldugumu-Nasil-Anlarim1.jpg');
-            setImgBodyCondition('https://i.pinimg.com/736x/bc/2d/44/bc2d447d96dae26b9e97218fc28914ec.jpg');
+            setImgBodyCondition('https://www.docdrmuratkanlioz.com/en/wp-content/uploads/2023/06/Obez-Oldugumu-Nasil-Anlarim1.jpg');
         } else if (user.bmi >= 35) {
-            // setImgBodyCondition('https://i.pinimg.com/236x/7f/27/bf/7f27bfdb527b473c3af27946c4aeb527.jpg');
-            setImgBodyCondition('https://i.pinimg.com/736x/ac/57/f9/ac57f9b086bda76e45a5c47c6e7d8fd0.jpg');
+            setImgBodyCondition('https://i.pinimg.com/236x/7f/27/bf/7f27bfdb527b473c3af27946c4aeb527.jpg');
         } else {
             setImgBodyCondition('')
         }
@@ -196,17 +194,14 @@ const HomeScreen = () => {
                     <Text style={[styles.contentItem, { color: '#FFA500' }]}>- {user.advice}</Text>
 
                     {/* <Text style={[styles.contentItem, { marginTop: 10 }]}>- Cơ thể: </Text> */}
-                    <View style={{ backgroundColor: 'white', width: '100%', height: 200, marginVertical: 10, }}>
+                    <View style={{ backgroundColor: 'white', width: '100%', height: 200, marginVertical: 10, justifyContent: 'center', alignItems: 'center' }}>
                         {imgBodyCondition !== null && imgBodyCondition !== '' ? (
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <View style={{flex:1,}}>
-                                    <Text style={[styles.contentItem,]}>Cân nặng: {user.weight}</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={styles.contentItem}>Cân nặng: {user.weight}</Text>
                                     <Text style={styles.contentItem}>Trạng thái: {user.BMIstatus}</Text>
                                 </View>
-                                <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-                                    <Image source={{ uri: imgBodyCondition }} style={{ width: 150, height: 200, resizeMode: 'contain' }} />
-                                    <Text style={[styles.contentItem,{fontSize:12}]}>(ảnh minh họa)</Text>
-                                </View>
+                                <Image source={{ uri: imgBodyCondition }} style={{ width: 150, height: 200, resizeMode: 'contain' }} />
                             </View>
                         ) : (
                             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

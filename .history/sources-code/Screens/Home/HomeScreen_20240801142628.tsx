@@ -199,11 +199,11 @@ const HomeScreen = () => {
                     <View style={{ backgroundColor: 'white', width: '100%', height: 200, marginVertical: 10, }}>
                         {imgBodyCondition !== null && imgBodyCondition !== '' ? (
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <View style={{flex:1,}}>
+                                <View style={{}}>
                                     <Text style={[styles.contentItem,]}>Cân nặng: {user.weight}</Text>
                                     <Text style={styles.contentItem}>Trạng thái: {user.BMIstatus}</Text>
                                 </View>
-                                <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+                                <View style={{justifyContent:'center',alignItems:'center'}}>
                                     <Image source={{ uri: imgBodyCondition }} style={{ width: 150, height: 200, resizeMode: 'contain' }} />
                                     <Text style={[styles.contentItem,{fontSize:12}]}>(ảnh minh họa)</Text>
                                 </View>
