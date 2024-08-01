@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#21CE9C',
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 10,
   },
   imgBack: {
     width: 30,
