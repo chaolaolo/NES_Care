@@ -319,16 +319,16 @@ const Video = () => {
         )}
       </View>
 
-      {
-        user.role == "Admin" ? (
+      {/* {
+        user.role == "Admin" ? ( */}
           <TouchableOpacity
             onPress={() => setShowAddModal(true)}
             style={[styles.btnAddVideo, isScrollingDown ? { opacity: 0 } : { opacity: 1 }]}>
             <Text style={styles.txtAddVideo}>+</Text>
           </TouchableOpacity>
-        )
-           : null
-       }
+      //   )
+      //     : null
+      // }
 
       {/* **** */}
       <ModalComponent

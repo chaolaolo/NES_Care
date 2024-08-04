@@ -53,28 +53,20 @@ const CalculateBMIScreen = () => {
 
     const handleSubmit = async () => {
         let err = false;
-
-        if (height.length == 0) {
-            setErrHeight('Hãy nhập chiều cao để có thể tính BMI!');
-            err = true;
-        } else if (parseFloat(height) < 50) {
-            setErrHeight('Vui lòng nhập chiều cao 50 cm!');
+        if (parseFloat(height) < 50) {
+            setErrHeight('Please enter a larger number or less than 50 cm!');
             err = true;
         } else if (parseFloat(height) > 400) {
-            setErrHeight('Vui lòng nhập chiều cao cao dưới 400 cm!');
+            setErrHeight('Please enter a number less than or equal to 400 cm!');
             err = true;
         } else {
             setErrHeight('');
         }
-
-        if (weight.length==0) {
-            setErrWeight('Hãy nhập cân nặng để có thể tính BMI!');
-            err = true;
-        }else if (parseFloat(weight) < 20) {
-            setErrWeight('Cân nặng ít nhất phải 20 kg!');
+        if (parseFloat(weight) < 20) {
+            setErrWeight('Please enter a larger number or less than 20 kg!');
             err = true;
         } else if (parseFloat(weight) > 400) {
-            setErrWeight('Cân nặng không được quá giới hạn 400 kg!');
+            setErrWeight('Please enter a number less than equal to 400 kg!');
             err = true;
         } else {
             setErrWeight('');
@@ -173,14 +165,14 @@ const CalculateBMIScreen = () => {
                     <Image source={require('../../image/ic_arrow_left.png')} style={{ width: 34, height: 34, marginTop: 16, marginLeft: 10 }} />
                 </TouchableOpacity>
                 <Text style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    color: 'black',
-                    textAlign: 'center',
-                    justifyContent: 'center',
-                    flex: 1,
-                    paddingRight: 30
-                }}>Tính BMI</Text>
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: 'black',
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                        flex: 1,
+                        paddingRight: 30
+                    }}>Tính BMI</Text>
             </HeaderComponent>
 
             <View>

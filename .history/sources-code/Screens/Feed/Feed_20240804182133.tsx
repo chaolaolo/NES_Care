@@ -72,16 +72,12 @@ const Feed = () => {
 
         if (!thanksSnapshot.empty) {
           setIsLoading(false);
-          const gratefulList = thanksSnapshot.docs.map(doc => {
-            const data = doc.data();
-            return {
-              id: doc.id,
-              ...data,
-              // date: doc.data.date?.toDate(),
-              date: data.date.toDate().toDateString(),
-              friendDetails: friendsMap[data.uid] || {}
-            };
-          });
+          const gratefulList = thanksSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            date: data.timestamp.toDate(),
+            friendDetails: friendsMap[doc.data().uid] || {}
+          }));
           setListGrateful(gratefulList);
 
           // Initialize like counts
@@ -122,7 +118,7 @@ const Feed = () => {
 
   const renderItem = ({ item }) => {
     const isLiked = likedItems[item.id];
-    // const formattedDate = item.date ? item.date : 'No Date';
+    const formattedDate =  item.date ? new Date(Date.parse(item.date)) : null;
     return (
       <View style={styles.itemContainer}>
         <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: 'gray', paddingBottom: 10, alignItems: 'center' }}>
@@ -131,10 +127,8 @@ const Feed = () => {
           ) : (
             <View style={styles.avatar} />  // Empty view for missing avatar
           )}
-          <View>
-            <Text style={styles.friendName}>{item.friendDetails.fullName}</Text>
-            <Text style={[styles.friendName,{fontWeight:'normal',fontSize:12}]}>{item.date}</Text>
-          </View>
+          <Text style={styles.friendName}>{item.friendDetails.fullName}</Text>
+          <Text style={styles.friendName}>{item.formattedDate}</Text>
         </View>
         <View style={styles.itemContent}>
           <Text style={styles.itemText}>{item.content}</Text>
@@ -176,7 +170,7 @@ const Feed = () => {
             data={listGrateful}
             keyExtractor={item => item.id}
             renderItem={renderItem}
-            contentContainerStyle={{ paddingBottom: 100 }}
+            contentContainerStyle={{paddingBottom:100}}
           />
         ) : (
           <View style={{ position: 'absolute', width: '120%', height: '100%', backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
@@ -197,7 +191,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: 'white',
-    paddingTop: 70
+    paddingTop:70
   },
   itemContainer: {
     padding: 10,
@@ -235,13 +229,13 @@ const styles = StyleSheet.create({
     zIndex: 3,
     justifyContent: 'space-between',
     // flexDirection: 'row',
-  },
-  txtHeaderTitle: {
+},
+txtHeaderTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#432C81',
     textAlign: 'center',
     flex: 1,
     paddingRight: 30
-  },
+},
 });

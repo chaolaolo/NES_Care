@@ -1,9 +1,8 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, View, Alert } from 'react-native'
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 import { ActivityIndicator } from 'react-native'
-import { TouchableOpacity } from 'react-native'
 
 const AllFriends = () => {
   const [listAllFriend, setListAllFriend] = useState([])
@@ -36,40 +35,6 @@ const AllFriends = () => {
     fetchAllFriends()
   }, [])
 
-
-  const unfriend = async (friendId) => {
-    try {
-      const user = auth().currentUser
-      if (user) {
-        const uid = user.uid
-        await firestore().collection('Users').doc(uid).update({
-          friends: firestore.FieldValue.arrayRemove(friendId)
-        })
-        setListAllFriend(listAllFriend.filter(friend => friend.id !== friendId))
-      }
-    } catch (error) {
-      console.error("Error unfriending: ", error)
-    }
-  }
-
-  const confirmUnfriend = (friendId) => {
-    Alert.alert(
-      "Hủy kết bạn",
-      "Bạn chắc chắn hủy kết bạn với người này?",
-      [
-        {
-          text: "Hủy",
-          style: "cancel"
-        },
-        {
-          text: "Đúng",
-          onPress: () => unfriend(friendId)
-        }
-      ],
-      { cancelable: false }
-    )
-  }
-
   const renderFriendItem = ({ item }) => {
     return (
       <View style={styles.itemContainer}>
@@ -78,9 +43,9 @@ const AllFriends = () => {
           <Text style={styles.itemName}>{item.fullName}</Text>
           <Text style={styles.itemEmail}>{item.email}</Text>
         </View>
-        <TouchableOpacity onPress={() => confirmUnfriend(item.id)}>
+        <View style={{}}>
           <Text>Hủy kết bạn</Text>
-        </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -97,17 +62,11 @@ const AllFriends = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {listAllFriend.length > 0 ? (
-        <FlatList
-          data={listAllFriend}
-          keyExtractor={item => item.id.toString()}
-          renderItem={renderFriendItem}
-        />
-      ) : (
-        <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-          <Text style={{ fontSize: 18 }}>Bạn chưa có bạn bè nào</Text>
-        </View>
-      )}
+      <FlatList
+        data={listAllFriend}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderFriendItem}
+      />
     </SafeAreaView>
   )
 }
@@ -123,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    marginHorizontal: 5,
     backgroundColor: 'white',
     borderRadius: 5,
     marginBottom: 10,

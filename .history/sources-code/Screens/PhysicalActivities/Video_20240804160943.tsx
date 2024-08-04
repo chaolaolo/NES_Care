@@ -327,8 +327,8 @@ const Video = () => {
             <Text style={styles.txtAddVideo}>+</Text>
           </TouchableOpacity>
         )
-           : null
-       }
+          : null
+      }
 
       {/* **** */}
       <ModalComponent

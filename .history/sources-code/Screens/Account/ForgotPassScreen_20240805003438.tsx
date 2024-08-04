@@ -4,7 +4,6 @@ import HeaderComponent from '../../../components/Header/HeaderComponent'
 import TextInputComponent from '../../../components/TextInput/TextInputComponent'
 import ButtonComponent from '../../../components/Button/ButtonComponent'
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore'
 
 const ForgotPassScreen = () => {
     const [email, setEmail] = useState('');

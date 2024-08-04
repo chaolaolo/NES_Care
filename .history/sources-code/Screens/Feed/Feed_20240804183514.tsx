@@ -131,10 +131,8 @@ const Feed = () => {
           ) : (
             <View style={styles.avatar} />  // Empty view for missing avatar
           )}
-          <View>
-            <Text style={styles.friendName}>{item.friendDetails.fullName}</Text>
-            <Text style={[styles.friendName,{fontWeight:'normal',fontSize:12}]}>{item.date}</Text>
-          </View>
+          <Text style={styles.friendName}>{item.friendDetails.fullName}</Text>
+          <Text style={styles.friendName}>{item.date}</Text>
         </View>
         <View style={styles.itemContent}>
           <Text style={styles.itemText}>{item.content}</Text>

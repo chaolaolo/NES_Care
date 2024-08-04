@@ -1,4 +1,4 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, View, Alert } from 'react-native'
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, View ,Alert} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
@@ -97,17 +97,11 @@ const AllFriends = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {listAllFriend.length > 0 ? (
-        <FlatList
-          data={listAllFriend}
-          keyExtractor={item => item.id.toString()}
-          renderItem={renderFriendItem}
-        />
-      ) : (
-        <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-          <Text style={{ fontSize: 18 }}>Bạn chưa có bạn bè nào</Text>
-        </View>
-      )}
+      <FlatList
+        data={listAllFriend}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderFriendItem}
+      />
     </SafeAreaView>
   )
 }
@@ -123,7 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    marginHorizontal: 5,
+    marginHorizontal:5,
     backgroundColor: 'white',
     borderRadius: 5,
     marginBottom: 10,

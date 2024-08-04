@@ -4,13 +4,12 @@ import HeaderComponent from '../../../components/Header/HeaderComponent'
 import TextInputComponent from '../../../components/TextInput/TextInputComponent'
 import ButtonComponent from '../../../components/Button/ButtonComponent'
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore'
 
 const ForgotPassScreen = () => {
     const [email, setEmail] = useState('');
     const [errEmail, setErrEmail] = useState('');
 
-    const handlePasswordReset = async () => {
+    const handlePasswordReset = () => {
         let err = false;
         let emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         if (email.length === 0) {
@@ -24,41 +23,20 @@ const ForgotPassScreen = () => {
         }
 
         if (!err) {
-            // auth()
-            //     .sendPasswordResetEmail(email)
-            //     .then(() => {
-            //         Alert.alert('Thành Công', 'Đã gửi email thiết lập mật khẩu, hãy kiểm tra email của bạn!')
-            //     })
-            //     .catch((error) => {
-            //         if (error.code === 'auth/user-not-found') {
-            //             // Alert.alert('Error', 'No user found for that email.');
-            //             setErrEmail('Email is not registered on the application')
-            //         }
-            //         else {
-            //             Alert.alert('Error', error.message)
-            //         }
-            //     })
-
-            try {
-                const userSnapshot = await firestore()
-                    .collection('Users')
-                    .where('email', '==', email)
-                    .get();
-
-                if (userSnapshot.empty) {
-                    setErrEmail('Email is not registered on the application');
-                    return;
-                }
-
-                await auth().sendPasswordResetEmail(email);
-                Alert.alert('Thành Công', 'Đã gửi email thiết lập mật khẩu, hãy kiểm tra email của bạn!');
-            } catch (error) {
-                if (error.code === 'auth/user-not-found') {
-                    setErrEmail('Email is not registered on the application');
-                } else {
-                    Alert.alert('Error', error.message);
-                }
-            }
+            auth()
+                .sendPasswordResetEmail(email)
+                .then(() => {
+                    Alert.alert('Thành Công', 'Đã gửi email thiết lập mật khẩu, hãy kiểm tra email của bạn!')
+                })
+                .catch((error) => {
+                    if (error.code === 'auth/user-not-found') {
+                        // Alert.alert('Error', 'No user found for that email.');
+                        setErrEmail('Email is not registered on the application')
+                    }
+                    else {
+                        Alert.alert('Error', error.message)
+                    }
+                })
         }
     }
 
@@ -67,17 +45,17 @@ const ForgotPassScreen = () => {
             <HeaderComponent title="Forgot Pasword" style={styles.headerContainer}>
                 <Image source={require('../../image/ic_arrow_left.png')} style={{ width: 34, height: 34, marginTop: 16, marginLeft: 10 }} />
                 <Text style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    color: 'black',
-                    textAlign: 'center',
-                    justifyContent: 'center',
-                    flex: 1,
-                    paddingRight: 30
-                }}>Quên Mật Khẩu</Text>
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: 'black',
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                        flex: 1,
+                        paddingRight: 30
+                    }}>Quên Mật Khẩu</Text>
             </HeaderComponent>
             <View>
-                <Text style={{ marginHorizontal: 16, textAlign: 'justify', marginVertical: 10, fontSize: 20, color: 'black' }}>
+                <Text style={{ marginHorizontal: 16,textAlign:'justify', marginVertical: 10, fontSize: 20, color: 'black' }}>
                     Hãy nhập email mà bạn đã đăng ký trên ứng dụng để thiết lập mật khẩu mới nhé.
                 </Text>
                 <View style={{ marginBottom: errEmail ? 0 : 19 }}>

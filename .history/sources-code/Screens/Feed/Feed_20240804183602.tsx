@@ -133,7 +133,7 @@ const Feed = () => {
           )}
           <View>
             <Text style={styles.friendName}>{item.friendDetails.fullName}</Text>
-            <Text style={[styles.friendName,{fontWeight:'normal',fontSize:12}]}>{item.date}</Text>
+            <Text style={[styles.friendName,{fontWeight:'normal'}]}>{item.date}</Text>
           </View>
         </View>
         <View style={styles.itemContent}>
