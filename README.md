@@ -1,15 +1,3 @@
-#Giao diện app
-
-![Uploading Screenshot_1722577205 - Copy.png…]()
-![Screenshot_1722577195](https://github.com/user-attachments/assets/ac31cdb2-4e0c-48bb-a820-622fd274ee0a)
-
-
-
-
-
-
-
-
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
