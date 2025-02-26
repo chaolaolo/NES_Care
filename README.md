@@ -80,7 +80,7 @@ npx react-native run-ios
 NES_Care/
 ├── android/               # Mã nguồn Android
 ├── ios/                   # Mã nguồn iOS
-├── src/                   # Mã nguồn chính
+├── sources-code/           # Mã nguồn chính
 │   ├── components/        # Các component UI tái sử dụng
 │   ├── config/            # Cấu hình Firebase và các thiết lập khác
 │   ├── screens/           # Các màn hình trong ứng dụng
@@ -109,3 +109,72 @@ Dự án sử dụng Firebase Authentication để quản lý người dùng và
 - Tác giả: Chảo Láo Lở
 - Nếu bạn có bất kỳ câu hỏi nào về dự án, vui lòng liên hệ với tôi qua email: [chaolaolo290604@gmail.com](mailto:chaolaolo@example.com).
 
+
+
+<table>
+  <tr>
+    <td colspan="5">Đăng ký/Đăng nhập/Quên mật khẩu</td>
+  </tr>
+  <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577195.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577205.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577210.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577215.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577229.png" width="190"></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td colspan="6">Home - Tính BMI - Gợi ý meunu ăn uống, tập thể dục</td>
+  </tr>
+  <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577480.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594690.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577494.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577499.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577509.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577564.png" width="190"></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td colspan="5">Xem video - Nghe nhạc</td>
+  </tr>
+  <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577669.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577714.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577759.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577797.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577816.png" width="190"></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td colspan="5">Nhắn tin - Viết lời biết ơn - Kết bạn</td>
+  </tr>
+  <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578442.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578828.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578966.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578975.png" width="190"></td>
+  <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722579018.png" width="190"></td>
+  </tr>
+ <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578905.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722578914.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594792.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594801.png" width="190"></td>
+ </tr>
+</table>
+<table>
+  <tr>
+    <td colspan="5">Quản lý trang cá nhân</td>
+  </tr>
+  <tr>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594568.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594632.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594645.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594653.png" width="190"></td>
+    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594681.png" width="190"></td>
+  </tr>
+</table>
