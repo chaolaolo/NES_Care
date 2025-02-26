@@ -110,7 +110,7 @@ Dự án sử dụng Firebase Authentication để quản lý người dùng và
 - Nếu bạn có bất kỳ câu hỏi nào về dự án, vui lòng liên hệ với tôi qua email: [chaolaolo290604@gmail.com](mailto:chaolaolo@example.com).
 
 
-
+## Ảnh chụp giao diện ứng dụng
 <table>
   <tr>
     <td colspan="5">Đăng ký/Đăng nhập/Quên mật khẩu</td>
@@ -125,16 +125,18 @@ Dự án sử dụng Firebase Authentication để quản lý người dùng và
 </table>
 <table>
   <tr>
-    <td colspan="6">Home - Tính BMI - Gợi ý meunu ăn uống, tập thể dục</td>
+    <td colspan="3">Home - Tính BMI - Gợi ý meunu ăn uống, tập thể dục</td>
   </tr>
   <tr>
     <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577480.png" width="190"></td>
     <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722594690.png" width="190"></td>
     <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577494.png" width="190"></td>
-    <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577499.png" width="190"></td>
+  </tr>
+ <tr>
+   <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577499.png" width="190"></td>
     <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577509.png" width="190"></td>
     <td><img src="sources-code/Screens/ScreenShots/Screenshot_1722577564.png" width="190"></td>
-  </tr>
+ </tr>
 </table>
 <table>
   <tr>
