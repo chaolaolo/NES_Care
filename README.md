@@ -3,10 +3,6 @@
 
 **NES_Care** là một ứng dụng hỗ trợ quản lý chăm sóc sức khỏe và tư vấn, được phát triển bằng React Native cho nền tảng di động và sử dụng Firebase làm backend để lưu trữ và quản lý dữ liệu người dùng, bao gồm thông tin về các phiên tư vấn, tình trạng sức khỏe, v.v.
 
-## Mô tả dự án
-
-Dự án **NES_Care** giúp người dùng theo dõi tình trạng sức khỏe của mình, nhận các thông tin tư vấn từ các chuyên gia, và lưu trữ dữ liệu liên quan đến sức khỏe như bước đi, calo đã đốt cháy, và các mục tiêu sức khỏe.
-
 ### Tính năng chính
 - Đăng nhập và đăng ký qua Firebase Authentication.
 - Quản lý hồ sơ người dùng với thông tin sức khỏe và mục tiêu.
@@ -19,7 +15,6 @@ Dự án **NES_Care** giúp người dùng theo dõi tình trạng sức khỏe 
 - Kết bạn với người quen
 
 ## Công nghệ sử dụng
-
 - **React Native**: Framework phát triển ứng dụng di động.
 - **Ngôn ngữ**: JavaScript, TypeScript, định kiểu với HTML và CSS
 - **Firebase**: Backend cho ứng dụng, sử dụng Firebase Authentication để đăng nhập người dùng, Firestore để lưu trữ dữ liệu.
@@ -27,55 +22,37 @@ Dự án **NES_Care** giúp người dùng theo dõi tình trạng sức khỏe 
 - **React Navigation**: Điều hướng giữa các màn hình trong ứng dụng.
 
 ## Cài đặt
-
 ### 1. Cài đặt môi trường
-
 Trước khi bắt đầu, bạn cần cài đặt các công cụ sau:
-
 - [Node.js](https://nodejs.org/) (>=14.0)
 - [React Native CLI](https://reactnative.dev/docs/environment-setup)
 - [Android Studio](https://developer.android.com/studio) (cho Android) hoặc [Xcode](https://developer.apple.com/xcode/) (cho iOS)
 
 ### 2. Cài đặt phụ thuộc
-
 Clone repository này về máy:
-
 ```bash
 git clone https://github.com/chaolaolo/NES_Care.git
 cd NES_Care
 ```
-
 Cài đặt các phụ thuộc:
-
 ```bash
 npm install
 ```
-
 ### 3. Cấu hình Firebase
-
 Để cấu hình Firebase cho dự án, bạn cần tạo một dự án trên [Firebase Console](https://console.firebase.google.com/).
-
 - Tạo một ứng dụng Firebase và lấy thông tin cấu hình.
 - Thêm cấu hình Firebase vào ứng dụng bằng cách tạo file `firebaseConfig.js` trong thư mục `src/config/` và nhập thông tin cấu hình Firebase từ Firebase Console.
-
 ### 4. Chạy ứng dụng
-
 Để chạy ứng dụng trên Android hoặc iOS, bạn có thể sử dụng các lệnh sau:
-
 - Chạy trên Android:
-
 ```bash
 npx react-native run-android
 ```
-
 - Chạy trên iOS:
-
 ```bash
 npx react-native run-ios
 ```
-
 ## Cấu trúc dự án
-
 ```
 NES_Care/
 ├── android/               # Mã nguồn Android
@@ -89,11 +66,8 @@ NES_Care/
 ├── package.json           # Cấu hình của dự án Node.js
 └── README.md              # File README cho dự án
 ```
-
 ## Firebase Setup
-
 Dự án sử dụng Firebase Authentication để quản lý người dùng và Firestore để lưu trữ dữ liệu. Để sử dụng Firebase trong ứng dụng, bạn cần thực hiện các bước cấu hình sau:
-
 1. Đăng ký Firebase và tạo dự án.
 2. Thêm Firebase SDK vào dự án của bạn.
 3. Cấu hình Firebase Authentication và Firestore.
