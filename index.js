@@ -9,7 +9,7 @@ import { name as appName } from './app.json';
 import TrackPlayer from 'react-native-track-player';
 import { playbackService } from './sources-code/Music/MusicService';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => App); 
 TrackPlayer.registerPlaybackService(() => playbackService)
- 
-LogBox.ignoreAllLogs();
+
+LogBox.ignoreAllLogs(); //ignore all warning log 

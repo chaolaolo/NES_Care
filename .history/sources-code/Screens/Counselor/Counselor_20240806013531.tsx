@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { DrawerActions, useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux';
@@ -67,8 +67,8 @@ const Counselor = () => {
 
                     const userIds = messagesSnapshot.docs.map(doc => doc.data().sender);
                     const uniqueUserIds = [...new Set(userIds)];
-
-                    const usersPromises = uniqueUserIds.map(uid =>
+                    
+                    const usersPromises = uniqueUserIds.map(uid => 
                         firestore().collection('Users').doc(uid).get()
                     );
 
@@ -156,7 +156,7 @@ const Counselor = () => {
                 })}>
                 <Image style={styles.avatar} source={item.avatar ? { uri: item.avatar } : require('../../image/ic_LeftinputUserName.png')} />
                 <View style={{ flexDirection: 'column', flex: 1 }}>
-                    <Text style={styles.name}>{item.role === "Expert" ? "Chuyên gia" : "Người cần tư vấn"}</Text>
+                    <Text style={styles.name}>{item.role==="Expert"?"Chuyên gia":"Người cần tư vấn"}</Text>
                     {item.consultingField ? (
                         <>
                             <Text style={{ marginLeft: 16 }}>(Chuyên gia: {item.consultingField})</Text>
@@ -196,38 +196,28 @@ const Counselor = () => {
                     <Image style={styles.headerAvatar} source={user.avatar ? { uri: user.avatar } : require('../../image/ic_LeftinputUserName.png')} />
                 </TouchableOpacity>
             </View>
-
-            {
-                loading ? (
-                    <View>
-                        <ActivityIndicator size={'large'} />
-                    </View>
+            <View style={{
+                backgroundColor: 'rgba(237, 236, 244, 0.2)', flex: 1,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+                elevation: 2,
+                shadowColor: 'black',
+                shadowOpacity: 0.6,
+                shadowOffset: 0.6
+            }}>
+                {listPerson.length > 0 ? (
+                    <FlatList
+                        data={listPerson}
+                        keyExtractor={item => item.id}
+                        renderItem={renderItem}
+                    />
                 ) : (
-                    <View style={{
-                        backgroundColor: 'rgba(237, 236, 244, 0.2)', flex: 1,
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20,
-                        elevation: 2,
-                        shadowColor: 'black',
-                        shadowOpacity: 0.6,
-                        shadowOffset: 0.6
-                    }}>
-                        {listPerson.length > 0 ? (
-                            <FlatList
-                                data={listPerson}
-                                keyExtractor={item => item.id}
-                                renderItem={renderItem}
-                            />
-                        ) : (
-                            <Text style={{
-                                color: '#5198FF', justifyContent: 'center', alignSelf: 'center', flex: 1, fontSize: 18, textAlignVertical: 'center', marginHorizontal: 20
-                            }}>Chưa có chuyên gia nào trong lĩnh vực này, vui lòng chọn lại sau!</Text>
-                        )}
+                    <Text style={{
+                        color: '#5198FF', justifyContent: 'center', alignSelf: 'center', flex: 1, fontSize: 18, textAlignVertical: 'center', marginHorizontal: 20
+                    }}>Chưa có chuyên gia nào trong lĩnh vực này, vui lòng chọn lại sau!</Text>
+                )}
 
-                    </View>
-
-                )
-            }
+            </View>
 
 
             {/* ***consulting Field Modal*** */}

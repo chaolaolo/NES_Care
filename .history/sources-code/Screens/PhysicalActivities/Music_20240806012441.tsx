@@ -229,7 +229,7 @@ function Header() {
         if (track != null) {
             const info = await TrackPlayer.getTrack(track);
             // setInfo(info);
-            setInfo(info || {   artwork: 'https://media1.giphy.com/media/eJYIGMu4UuQlUiXfDC/giphy.gif?cid=6c09b9527pa43ls5qew4l6ftcdgmyd3jcofcixf9gkopft8q&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s' });
+            setInfo(trackInfo || {   artwork: 'https://media1.giphy.com/media/eJYIGMu4UuQlUiXfDC/giphy.gif?cid=6c09b9527pa43ls5qew4l6ftcdgmyd3jcofcixf9gkopft8q&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s' });
         } else {
             setInfo({ title: 'Unknown', artist: 'Unknown', artwork: 'https://media1.giphy.com/media/eJYIGMu4UuQlUiXfDC/giphy.gif?cid=6c09b9527pa43ls5qew4l6ftcdgmyd3jcofcixf9gkopft8q&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s' });
         }

@@ -11,5 +11,5 @@ import { playbackService } from './sources-code/Music/MusicService';
 
 AppRegistry.registerComponent(appName, () => App);
 TrackPlayer.registerPlaybackService(() => playbackService)
- 
-LogBox.ignoreLogs();
+
+LogBox.ignoreAllLogs(); //ignore all warning log 

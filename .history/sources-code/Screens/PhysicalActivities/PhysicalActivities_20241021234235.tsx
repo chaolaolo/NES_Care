@@ -27,7 +27,6 @@ const PhysicalActivities = () => {
                     onPress={() => handleActivityChange('Move')}
                     style={{
                         flex: 1,
-                        // backgroundColor: selectedActivity === 'Move' ? '#007bff' : '#ccc',
                         paddingVertical: 5,
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -57,7 +56,7 @@ const PhysicalActivities = () => {
                         color: selectedActivity === 'Yoga' ? '#21CE9C' : '#432C81',
                         fontWeight: selectedActivity === 'Yoga' ? 'bold' : 'normal',
                         fontSize: 16
-                    }}>Meditation-Yoga</Text>
+                    }}>Thiền - Yoga</Text>
                 </Pressable>
             </View>
 

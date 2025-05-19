@@ -246,27 +246,27 @@ const ProfileScreen = () => {
 
                 </View>
 
-                {
-                    isLoading ?
-                        <View
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                backgroundColor: 'rgba(0,0,0,0.5)',
-                                position: 'absolute',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }} >
-                            <ActivityIndicator size="large" color="#407CE2" style={{ marginHorizontal: 10 }} />
-                            <Text style={{
-                                color: 'white',
-                                textAlign: 'center',
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                            }}>Đang cập nhật ảnh đại diện</Text>
-                        </View>
-                        : null
-                }
+                {/* {
+                    isLoading ? */}
+                <View
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        position: 'absolute',
+                        flexDirection:'row',
+                        justifyContent: 'center'
+                    }} >
+                    <ActivityIndicator size="large" color="#407CE2" style={{ marginHorizontal: 10 }} />
+                    <Text style={{
+                        color: 'white',
+                        textAlign: 'center',
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                    }}>Đang cập nhật ảnh đại diện</Text>
+                </View>
+                {/* : null */}
+                {/* } */}
                 {/* </View> */}
 
 

@@ -145,13 +145,13 @@ const ProfileScreen = () => {
                     style={{
                         backgroundColor: 'white',
                         width: '90%',
-                        height: '100%',
+                        height:'100%',
                         position: 'absolute',
                         margin: 20, marginTop: 180,
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                        elevation: 10,
-                        shadowColor: 'black'
+                        borderTopLeftRadius:10,
+                        borderTopRightRadius:10,
+                        elevation:10,
+                        shadowColor:'black'
                     }}>
                     <View style={styles.mainContent}>
                         <TouchableOpacity onPress={() => setShowAvatar(true)} style={{ position: 'absolute', }}>
@@ -178,18 +178,18 @@ const ProfileScreen = () => {
                     </View>
 
                     <View style={{ flexDirection: 'row', marginTop: 10, paddingHorizontal: 10 }}>
-                        <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#E4F9F3' }}>
+                        <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1, alignItems: 'center',justifyContent:'center', backgroundColor: '#E4F9F3' }}>
                             <Text style={styles.mainText}>{age}</Text>
                             <Text>Tuổi</Text>
                         </View>
-                        <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#E4F9F3' }}>
+                        <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1, alignItems: 'center',justifyContent:'center', backgroundColor: '#E4F9F3' }}>
                             <Text style={styles.mainText}>{user.gender || 'Not Specified'}</Text>
                             <Text>Giới tính</Text>
                         </View>
                         {user.role === 'Expert' ? (
                             <>
-                                <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#E4F9F3' }}>
-                                    <Text style={[styles.mainText, { fontSize: 17, textAlign: 'center', }]}>{user.consultingField || 'Not update yet'}</Text>
+                                <View style={{ marginHorizontal: 4, marginVertical: 2, flex: 1,alignItems:'center',justifyContent:'center', backgroundColor: '#E4F9F3' }}>
+                                    <Text style={[styles.mainText, { fontSize: 17,textAlign:'center', }]}>{user.consultingField || 'Not update yet'}</Text>
                                     <Text>Chuyên gia</Text>
                                 </View>
                             </>
@@ -245,28 +245,25 @@ const ProfileScreen = () => {
 
 
                 </View>
-
-                {
-                    isLoading ?
+              
+                {/* {
+                    isLoading ? */}
                         <View
                             style={{
-                                width: '100%',
-                                height: '100%',
+                                width: 120,
+                                height: 120,
+                                borderRadius: 100,
+                                marginHorizontal: 145,
+                                marginTop: 120,
                                 backgroundColor: 'rgba(0,0,0,0.5)',
                                 position: 'absolute',
-                                alignItems: 'center',
                                 justifyContent: 'center'
+
                             }} >
                             <ActivityIndicator size="large" color="#407CE2" style={{ marginHorizontal: 10 }} />
-                            <Text style={{
-                                color: 'white',
-                                textAlign: 'center',
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                            }}>Đang cập nhật ảnh đại diện</Text>
                         </View>
                         : null
-                }
+                {/* } */}
                 {/* </View> */}
 
 

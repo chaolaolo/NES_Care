@@ -27,7 +27,6 @@ const PhysicalActivities = () => {
                     onPress={() => handleActivityChange('Move')}
                     style={{
                         flex: 1,
-                        // backgroundColor: selectedActivity === 'Move' ? '#007bff' : '#ccc',
                         paddingVertical: 5,
                         justifyContent: 'center',
                         alignItems: 'center',
